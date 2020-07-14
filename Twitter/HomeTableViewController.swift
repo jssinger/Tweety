@@ -22,6 +22,7 @@ class HomeTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC = segue.destination as! LoginViewController
+        destVC.navigationController?.isNavigationBarHidden = true
         UserDefaults.standard.set(false, forKey: "userLoggedIn")
     }
     // MARK: - Table view data source
