@@ -12,11 +12,17 @@ class HomeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         
     }
+    
     @IBAction func onLogout(_ sender: Any) {
         TwitterAPICaller.client?.logout()
-        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC = segue.destination as! LoginViewController
+        UserDefaults.standard.set(false, forKey: "userLoggedIn")
     }
     // MARK: - Table view data source
 

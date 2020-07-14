@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HGV-mU-mc6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hvG-UE-sxr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -18,13 +18,15 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpe-oX-cnX">
                                 <rect key="frame" x="114.5" y="421" width="185" height="54"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.25781886774946805" green="0.76656021372246064" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Bg8-tz-5By"/>
                                     <constraint firstAttribute="width" constant="185" id="Fsy-oc-L29"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="onLoginButton:" destination="HGV-mU-mc6" eventType="touchUpInside" id="0tp-Av-9tr"/>
                                 </connections>
@@ -37,20 +39,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Na-9t-r8A"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cfA-ue-hki"/>
                     <connections>
-                        <segue destination="LaC-UJ-gb9" kind="presentation" identifier="loginToHome" id="yvX-s4-XLc"/>
+                        <segue destination="XvI-c5-Na1" kind="show" identifier="loginToHome" animates="NO" id="uif-VE-fne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGn-hs-X1i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-272.46376811594206" y="95.758928571428569"/>
+            <point key="canvasLocation" x="637.68115942028987" y="95.758928571428569"/>
         </scene>
         <!--Home-->
         <scene sceneID="feZ-uo-S3t">
             <objects>
                 <tableViewController id="XvI-c5-Na1" customClass="HomeTableViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gcd-t9-hC3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -69,37 +72,41 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="Zt5-1O-VOL">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="vCQ-n9-fal">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="CNk-KP-yuA">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="onLogout:" destination="XvI-c5-Na1" id="TWw-5w-Gzm"/>
+                                <action selector="onLogout:" destination="XvI-c5-Na1" id="48Z-vJ-DYT"/>
+                                <segue destination="cwc-0S-ZtH" kind="unwind" unwindAction="unwindToLogin:" id="SK0-Sn-EPI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t49-py-YYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="cwc-0S-ZtH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1284" y="96"/>
+            <point key="canvasLocation" x="1436" y="96"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="VwT-94-AU4">
+        <scene sceneID="gwi-7g-hPp">
             <objects>
-                <navigationController id="LaC-UJ-gb9" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zn9-Ez-Wgc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hvG-UE-sxr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Pd-lZ-9m2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.25781886770000001" green="0.76656021370000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="XvI-c5-Na1" kind="relationship" relationship="rootViewController" id="kKh-Hy-Iuo"/>
+                        <segue destination="HGV-mU-mc6" kind="relationship" relationship="rootViewController" id="I4v-9n-UkV"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8f3-VK-JEp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lw-v7-KdP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="486" y="96"/>
+            <point key="canvasLocation" x="-272.46376811594206" y="95.758928571428569"/>
         </scene>
     </scenes>
 </document>
