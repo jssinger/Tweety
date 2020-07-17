@@ -22,6 +22,18 @@ class TwitterCache {
                 self.tweetArray.append(tweet)
             }
             self.maxTweets = self.tweetArray.count
+            
+            DispatchQueue.main.async {
+                for tweet in tweets {
+                    if let user = tweet["user"] as? NSDictionary {
+                        if let urlString = user["profile_image_url_https"] as? String {
+                            if let url = URL(string: urlString) {
+                                ImageCache.cache.getImageForURL(url: url, success: {_ in }, failure: {})
+                            }
+                        }
+                    }
+                }
+            }
         }, failure: { (e) in
             print(e)
         })
