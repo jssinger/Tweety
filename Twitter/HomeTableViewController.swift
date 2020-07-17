@@ -27,15 +27,8 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc func loadTweets(){
-        fetchingMore = true
-        let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let myParams = ["count": numberOfTweets]
-        
-        if (self.numberOfTweets > 200) {
-            return
-        }
-        
-        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success: { (tweets: [NSDictionary]) in
+        fetchingMore = true        
+        TwitterCache.cache.loadTweets(count: numberOfTweets, success: { (tweets: [NSDictionary]) in
             self.tweetArray.removeAll()
             for tweet in tweets {
                 self.tweetArray.append(tweet)
@@ -43,15 +36,13 @@ class HomeTableViewController: UITableViewController {
             self.tableView.reloadData()
             self.myRefreshControl.endRefreshing()
             self.fetchingMore = false
-        }, failure: { (e) in
+        }) { (e: Error) in
             self.myRefreshControl.endRefreshing()
             print(e)
-            self.numberOfTweets -= 20
             self.fetchingMore = false
-        })
+        }
     }
-    
-
+        
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
