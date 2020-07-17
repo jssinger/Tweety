@@ -72,13 +72,13 @@ class HomeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCellTableViewCell
        
         let user = tweetArray[indexPath.row]["user"] as! NSDictionary
-        let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)
-        let data = try?Data(contentsOf: imageUrl!)
+        let imageUrl = URL(string: (user["profile_image_url_https"] as? String)!)!
         
-        if let imageData = data{
-            cell.profilePicture.image = UIImage(data: imageData)
+        ImageCache.cache.getImageForURL(url: imageUrl, success: { (image: UIImage) in
+            cell.profilePicture.image = image
+        }) {
+            print("Could not get profile image for URL: \(imageUrl.absoluteString)")
         }
-        
         cell.userNameLabel.text = user["name"] as? String
         cell.tweetLabel.text = tweetArray[indexPath.row]["text"] as? String
 
