@@ -27,12 +27,18 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc func loadTweets(){
-        fetchingMore = true        
+        fetchingMore = true
+        
+        if (numberOfTweets >= 200) {
+            fetchingMore = false
+            return
+        }
+        
         TwitterCache.cache.loadTweets(count: numberOfTweets, success: { (tweets: [NSDictionary]) in
-            self.tweetArray.removeAll()
-            for tweet in tweets {
-                self.tweetArray.append(tweet)
-            }
+            let currentTweetCount = self.tweetArray.count
+            let receivedTweetCount = tweets.count
+            self.tweetArray.append(contentsOf: tweets[currentTweetCount..<receivedTweetCount])
+            
             self.tableView.reloadData()
             self.myRefreshControl.endRefreshing()
             self.fetchingMore = false
