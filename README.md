@@ -14,6 +14,8 @@ The following functionality is completed:
 * [X] User can view tweets with the user profile picture, username, and tweet text
 * [X] User can pull to refresh
 * [X] User can load past tweets infinitely
+* [X] App caches tweets to support quicker loading and smoother scrolling
+* [X] App caches unique profile pictures to quicken loading
 
 ## License
 
