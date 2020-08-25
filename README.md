@@ -2,7 +2,7 @@
 
 Tweets is a basic twitter app to read your tweets.
 
-<img src='/.Walkthrough.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
+<img src='./Walkthrough.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
 
 ## User Stories
 The following functionality is completed:
