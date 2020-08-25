@@ -1,6 +1,6 @@
-# Tweets
+# Tweety
 
-Tweets is a basic twitter app to read your tweets.
+Tweety is a basic Twitter app to display your timeline.
 
 <img src='./Walkthrough.gif' title='Video Walkthrough' width='300' alt='Video Walkthrough' />
 
